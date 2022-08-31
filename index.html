@@ -3,9 +3,62 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu título</title>
+    <link rel="stylesheet" href="design.css">
+    <link rel="stylesheet" href="reset.css">
+    <title>Buzz Quizz</title>
   </head>
   <body>
 		
+
+
+    <section class="quizz-criation">
+
+      <header>
+        <span>BuzzQuizz</span>
+      </header>
+
+      <main>
+
+        <div class="screen-basic-informations">
+
+          <h2>Comece pelo começo</h2>
+          <div class="basic-informations">
+            <input class="input1" type="text" placeholder="Título do seu quizz">
+            <input class="input2" type="text" placeholder="URL da imagem do seu quizz">
+            <input class="input3" type="text" placeholder="Quantidade de pergutas do quizz">
+            <input class="input4"type="text" placeholder="Quantidade de níveis do quizz">
+          </div>
+          <button>Prosseguir para criar perguntas</button>
+
+        </div>
+
+        <div class="screen-create-questions">
+
+          <h2>Crie suas perguntas</h2>
+          <div class="create-questions">
+            <div class="first-question">
+              <h3>Pergunta 1</h3>
+              <input class="input" type="text">
+              <input type="text">
+            </div>
+            <div class="corret-answer"></div>
+            <div class="incorret-answer"></div>
+            
+          </div>
+
+        </div>
+      
+
+
+      </main>
+
+      
+    </section>
+
+
+    <!--ION-ICONS IMPORTADOR//  -->
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src='javascript.js'></script>
   </body>
 </html>

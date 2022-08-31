@@ -9,17 +9,19 @@
   </head>
   <body>
 		
+  
 
 
-    <section class="quizz-criation">
+    <section class="quizz-criation hidden">
 
+      
       <header>
         <span>BuzzQuizz</span>
       </header>
 
       <main>
 
-        <div class="screen-basic-informations">
+        <div class="screen-basic-informations hidden">
 
           <h2>Comece pelo começo</h2>
           <div class="basic-informations">
@@ -32,16 +34,20 @@
 
         </div>
 
-        <div class="screen-create-questions">
+        <div class="screen-create-questions hidden">
 
           <h2>Crie suas perguntas</h2>
           <div class="create-questions">
             <div class="first-question">
               <h3>Pergunta 1</h3>
-              <input class="input" type="text">
-              <input type="text">
+              <input class="input_txtquestion" type="text" placeholder="Texto da pergunta">
+              <input class="input_bgtxtquestion" type="text" placeholder="Cor de fundo da pergunta">
             </div>
-            <div class="corret-answer"></div>
+            <div class="corret-answer">
+              <h3>Resposta Correta</h3>
+              <input type="text" placeholder="Resposta correta">
+              <input type="text" placeholder="URL da imagem">
+            </div>
             <div class="incorret-answer"></div>
             
           </div>

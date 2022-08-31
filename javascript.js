@@ -1,3 +1,5 @@
+
+//** JAVASCRIPT EMERSON**//
 const button_1 = document.querySelector('.screen-basic-informations button');
 let input1 = document.querySelector('.screen-basic-informations .input1');
 let input2 = document.querySelector('.screen-basic-informations .input2');

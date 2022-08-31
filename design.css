@@ -117,9 +117,25 @@ body{
 .screen-create-questions .create-questions .first-question{
     display: flex;
     flex-direction: column;
+    background-color: palevioletred;
     
 }
 
+.screen-create-questions .create-questions .first-question h3{
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23.44px;
+    margin-bottom: 12px;
+    color: #000000;
 
+}
+
+.screen-create-questions .create-questions .corret-answer{
+    display: flex;
+    flex-direction: column;
+    background-color: pink;
+    margin-top: 20px;
+    
+}
 
 

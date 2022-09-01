@@ -3,13 +3,13 @@
 
 body{
    background-color: #FAFAFA;
-   font-family: Roboto, sans-serif;
+   font-family: "Roboto", sans-serif;
 }
 
 
 
 /*CSS TELA QUIZZ-CRIATION*/
-.quizz-criation{
+.quizz-criation .header-style{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -168,6 +168,98 @@ body{
     margin-top: 20px;
     background-color: red;
 
+}
+
+/* Tela 2 - EXIBIÇÃO DE UM QUIZZ*/
+
+.showpage-second-header {
+    align-items: center;
+    display: flex;
+    font-weight: 400;
+    height: 227px;
+    justify-content: center;
+    margin-bottom: 40px;
+    text-align: center;
+    width: 100vw;
+}
+
+.showpage-second-header img {
+    width: 100vw;
+    height: 100%;
+    filter: brightness(60%) ;
+}
+
+.showpage-second-header h3 {
+    position: absolute;
+    color: rgb(255, 255, 255);
+    font-size: 36px;
+}
+
+.question {
+    border: #000000 solid 1px;
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    background-color: rgb(41, 34, 167);
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 5%;
+}
+
+.question-container {
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 55vw;
+    height: 650px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 15px 0px;
+    margin-bottom: 40px;
+}
+
+.awnser-container {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+    border: #000000 solid 1px ;
+}
+
+.quizz-awnser {
+    width: 46%;
+    height: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.quizz-awnser-image {
+    border: #000000 solid 1px;
+    width: 100%;
+    height: 85%;
+}
+.quizz-awnser figcaption {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: 700;
+    border: #EC362D solid 1px;
+    height: 31px;
+    width: 100%;
+    font-size: 18px;
+}
+
+.quizz-showpage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 

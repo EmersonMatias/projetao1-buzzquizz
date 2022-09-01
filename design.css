@@ -3,14 +3,13 @@
 
 body{
    background-color: #FAFAFA;
-
+   font-family: Roboto, sans-serif;
 }
 
 
 
 /*CSS TELA QUIZZ-CRIATION*/
 .quizz-criation{
-    font-family: Roboto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,11 +39,12 @@ body{
 
 
     /*CSS SCREEN-BASIC-INFORMATIONS*/
-.screen-basic-informations, .screen-create-questions{
+.screen-basic-informations,
+.screen-create-questions{
     width: 600px;
     height: 100%;
     margin-top: 69px;
-    background-color: #000000;
+    background-color: yellow;
 
     display: flex;
     flex-direction: column;
@@ -68,7 +68,7 @@ body{
 
 }
 
-.screen-basic-informations .basic-informations, .screen-create-questions .create-questions{
+.screen-basic-informations .basic-informations{
     width: 600px;
     height: 100%;
     background-color: #FFFFFF;
@@ -78,7 +78,7 @@ body{
     margin-top: 25px;
     padding: 10px;
     padding-top: 15px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .screen-basic-informations .basic-informations input, .screen-create-questions .create-questions input{
@@ -96,7 +96,9 @@ body{
     color: #D1D1D1;
 }
 
-.screen-basic-informations button{
+.screen-basic-informations button,
+.screen-create-questions .button-next-levels
+{
     width: 370px;
     height: 54px;
     border-radius: 15px;
@@ -111,17 +113,43 @@ body{
 
 .screen-create-questions .create-questions{
     width: 564px;
-    background-color: aqua;
+    height: 100%;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+    padding: 10px;
+    padding-top: 15px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .screen-create-questions .create-questions .first-question{
-    display: flex;
-    flex-direction: column;
     background-color: palevioletred;
+    
     
 }
 
-.screen-create-questions .create-questions .first-question h3{
+.screen-create-questions .create-questions .alternate{
+    display: flex;
+    justify-content: space-between;
+    background-color: bisque;
+    width: 583px;
+}
+
+.screen-create-questions .create-questions .first-question ion-icon{
+    font-size: 23px;
+}
+
+.screen-create-questions .create-questions .first-question button{
+    background-color: #EC362D;
+}
+
+
+.screen-create-questions .create-questions .first-question h3,
+.screen-create-questions .create-questions .corret-answer h3,
+.screen-create-questions .create-questions .incorret-answer h3
+{
     font-size: 20px;
     font-weight: 700;
     line-height: 23.44px;
@@ -131,11 +159,17 @@ body{
 }
 
 .screen-create-questions .create-questions .corret-answer{
-    display: flex;
-    flex-direction: column;
     background-color: pink;
     margin-top: 20px;
     
 }
+
+.screen-create-questions .create-questions .incorret-answer{
+    margin-top: 20px;
+    background-color: red;
+
+}
+
+
 
 

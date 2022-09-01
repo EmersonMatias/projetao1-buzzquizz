@@ -12,7 +12,7 @@
   
 
 
-    <section class="quizz-criation hidden">
+    <section class="quizz-criation">
 
       
       <header>
@@ -38,19 +38,80 @@
 
           <h2>Crie suas perguntas</h2>
           <div class="create-questions">
+            
             <div class="first-question">
-              <h3>Pergunta 1</h3>
-              <input class="input_txtquestion" type="text" placeholder="Texto da pergunta">
-              <input class="input_bgtxtquestion" type="text" placeholder="Cor de fundo da pergunta">
+              <div class="alternate">
+                <h3>Pergunta 1</h3> 
+                <button onclick="alternate_question(this)"> <ion-icon name="create-outline"></ion-icon> </button>
+               
+              </div>
+              <div class="first-question-box">
+                <input class="input_txtquestion" type="text" placeholder="Texto da pergunta">
+                <input class="input_bgtxtquestion" type="text" placeholder="Cor de fundo da pergunta">
+              </div>
             </div>
+
             <div class="corret-answer">
               <h3>Resposta Correta</h3>
               <input type="text" placeholder="Resposta correta">
               <input type="text" placeholder="URL da imagem">
             </div>
-            <div class="incorret-answer"></div>
+
+            <div class="incorret-answer">
+
+              <h3>Respostas Incorretas</h3>
+              <input type="text" placeholder="Resposta incorreta 1">
+              <input type="text" placeholder="URL da imagem 1">
+
+              
+              <input type="text" placeholder="Resposta incorreta 2">
+              <input type="text" placeholder="URL da imagem 2">
+
+              
+              <input type="text" placeholder="Resposta incorreta 3">
+              <input type="text" placeholder="URL da imagem 3">
+            </div>
             
           </div>
+
+          <div class="create-questions">
+            
+            <div class="first-question">
+              <div class="alternate">
+                <h3>Pergunta 2</h3> 
+                <button onclick="alternate_question(this)"> <ion-icon name="create-outline"></ion-icon> </button>
+               
+              </div>
+              <div class="first-question-box">
+                <input class="input_txtquestion" type="text" placeholder="Texto da pergunta">
+                <input class="input_bgtxtquestion" type="text" placeholder="Cor de fundo da pergunta">
+              </div>
+            </div>
+
+            <div class="corret-answer">
+              <h3>Resposta Correta</h3>
+              <input type="text" placeholder="Resposta correta">
+              <input type="text" placeholder="URL da imagem">
+            </div>
+
+            <div class="incorret-answer">
+
+              <h3>Respostas Incorretas</h3>
+              <input type="text" placeholder="Resposta incorreta 1">
+              <input type="text" placeholder="URL da imagem 1">
+
+              
+              <input type="text" placeholder="Resposta incorreta 2">
+              <input type="text" placeholder="URL da imagem 2">
+
+              
+              <input type="text" placeholder="Resposta incorreta 3">
+              <input type="text" placeholder="URL da imagem 3">
+            </div>
+            
+          </div>
+
+          <button class="button-next-levels">Prosseguir para criar níveis</button>
 
         </div>
       

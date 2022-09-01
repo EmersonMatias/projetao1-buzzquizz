@@ -6,6 +6,7 @@ let input2 = document.querySelector('.screen-basic-informations .input2');
 let input3 = document.querySelector('.screen-basic-informations .input3');
 let input4 = document.querySelector('.screen-basic-informations .input4');
 
+
 let check;
 
 
@@ -33,3 +34,14 @@ button_1.addEventListener('click', () =>
        
     }
 )
+
+let alternate_question = (button_2) => {
+    const button_alternate = button_2.parentNode.parentNode.parentNode;
+    const hide_corret_answer = button_alternate.querySelector('.corret-answer').classList.toggle('hidden')
+    const hide_incorret_answer = button_alternate.querySelector('.incorret-answer').classList.toggle('hidden')
+    const input_hide = button_alternate.querySelector('.first-question-box').classList.toggle('hidden')
+
+    console.log(button_alternate)
+
+    
+}

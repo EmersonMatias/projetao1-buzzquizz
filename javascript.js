@@ -4,7 +4,7 @@ let apiQuizzes = [];
 
 function createQuizz(){
     const openWindow = document.querySelector('.open-window');
-    const createWindow = document.querySelector('.screen-basic-informations');
+    const createWindow = document.querySelector('.quizz-criation');
 
     openWindow.classList.add('hidden');
     createWindow.classList.remove('hidden');
@@ -29,7 +29,7 @@ function quizzesArrived(resposta) {
     console.log('Deu tudo certo');
 
     apiQuizzes = resposta.data;
-    
+
     console.log(apiQuizzes);
     renderizarQuizzes();
 }

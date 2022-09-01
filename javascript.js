@@ -1,3 +1,22 @@
+//** JAVASCRIPT MANUELA**//
+function createQuizz(){
+    const openWindow = document.querySelector('.open-window');
+    const createWindow = document.querySelector('.screen-basic-informations hidden');
+
+    openWindow.classList.add('hidden');
+    createWindow.classList.remove('hidden');
+}
+
+function openQuizz(){
+    const openWindow = document.querySelector('.open-window');
+    const createWindow = document.querySelector('.screen-basic-informations hidden');
+
+    openWindow.classList.add('hidden');
+    createWindow.classList.remove('hidden');
+}
+
+
+
 
 //** JAVASCRIPT EMERSON**//
 const button_1 = document.querySelector('.screen-basic-informations button');

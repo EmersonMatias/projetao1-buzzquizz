@@ -22,7 +22,7 @@
               Você não criou nenhum quizz ainda :(
             </div>
 
-            <button class="create-quizz-button-1">
+            <button class="create-quizz-button-1" onclick="createQuizz(this)">
               Criar Quizz
             </button>
           </div>
@@ -37,17 +37,10 @@
             </div>
 
             <div class="quizzes">
-              <div class="quizz">
+              <div class="quizz" onclick="openQuizz(this)">
                 <img src="https://http.cat/411.jpg">
                 <figcaption>
                   Acerte os personagens corretos dos Simpsons e prove seu amor!
-                </figcaption>               
-              </div>
-
-              <div class="quizz">
-                <img src="https://http.cat/411.jpg">
-                <figcaption>
-                  O quanto você é de boas?
                 </figcaption>               
               </div>
             </div>
@@ -58,42 +51,7 @@
           <div class="title-page1">Todos os Quizzes</div>
 
           <div class="quizzes">
-              <div class="quizz">
-                <img src="https://http.cat/411.jpg">
-                <figcaption>
-                  Acerte os personagens corretos dos Simpsons e prove seu amor!
-                </figcaption>               
-              </div>
-
-              <div class="quizz">
-                <img src="https://http.cat/411.jpg">
-                <figcaption>
-                  Acerte os personagens corretos dos Simpsons e prove seu amor!
-                </figcaption>               
-              </div>
-
-              <div class="quizz">
-                <img src="https://http.cat/411.jpg">
-                <figcaption>
-                  Acerte os personagens corretos dos Simpsons e prove seu amor!
-                </figcaption>               
-              </div>
-
-              <div class="quizz">
-                <img src="https://http.cat/411.jpg">
-                <figcaption>
-                  Acerte os personagens corretos dos Simpsons e prove seu amor!
-                </figcaption>               
-              </div>
-
-              <div class="quizz">
-                <img src="https://http.cat/411.jpg">
-                <figcaption>
-                  Acerte os personagens corretos dos Simpsons e prove seu amor!
-                </figcaption>               
-              </div>
-
-              <div class="quizz">
+              <div class="quizz" onclick="openQuizz(this)">
                 <img src="https://http.cat/411.jpg">
                 <figcaption>
                   Acerte os personagens corretos dos Simpsons e prove seu amor!
@@ -104,6 +62,72 @@
       </div>
     </section>
 
+    <section class="quizz-showpage hidden">
+
+
+      <header class=" header-style">
+        <span>BuzzQuizz</span>
+      </header>
+
+
+      <div class="showpage-second-header">
+
+        <img src="" alt="">
+        <h3></h3>
+
+      </div>
+
+
+      <div class="question-container">
+
+
+        <div class="question"></div>
+
+
+        <div class="awnser-container">
+
+
+          <figure class="quizz-awnser">
+
+            <div class="quizz-awnser-image"></div>
+
+            <figcaption><p></p></figcaption>
+
+          </figure>
+
+
+          <figure class="quizz-awnser">
+
+            <div class="quizz-awnser-image"></div>
+
+            <figcaption><p></p></figcaption>
+
+          </figure>
+
+
+          <figure class="quizz-awnser">
+
+            <div class="quizz-awnser-image"></div>
+
+            <figcaption><p></p></figcaption>
+
+          </figure>
+
+
+          <figure class="quizz-awnser">
+
+            <div class="quizz-awnser-image"></div>
+
+            <figcaption><p></p></figcaption>
+
+          </figure>
+
+
+        </div>
+
+      </div>
+
+    </section>
 
     <section class="quizz-criation">
 

@@ -9,6 +9,13 @@ body{
 
 
 /*CSS TELA QUIZZ-CRIATION*/
+.quizz-criation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
 .quizz-criation .header-style{
     display: flex;
     flex-direction: column;

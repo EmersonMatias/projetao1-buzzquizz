@@ -378,6 +378,8 @@ body{
   
     color: #FFFFFF;
 
+    overflow-wrap: anywhere;
+
     bottom: 55px;
     left: 18px;
   }

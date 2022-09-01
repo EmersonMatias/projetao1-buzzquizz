@@ -1,4 +1,7 @@
 //** JAVASCRIPT MANUELA**//
+
+let apiQuizzes = [];
+
 function createQuizz(){
     const openWindow = document.querySelector('.open-window');
     const createWindow = document.querySelector('.screen-basic-informations');
@@ -15,7 +18,38 @@ function openQuizz(){
     quizzWindow.classList.remove('hidden');
 }
 
+function getQuizzes (){
+    const promessa = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
+    promessa.then(quizzesArrived);
+}
 
+getQuizzes();
+
+function quizzesArrived(resposta) {
+    console.log('Deu tudo certo');
+
+    apiQuizzes = resposta.data;
+    
+    console.log(apiQuizzes);
+    renderizarQuizzes();
+}
+
+function renderizarQuizzes(){
+    const divApiQuizzes = document.querySelector('.api-quizzes .quizzes');
+    divApiQuizzes.innerHTML = '';
+
+    for(let i = 0; i < apiQuizzes.length; i++){
+        let quizz = `<div class="quizz" onclick="openQuizz(this)">
+        <img src=${apiQuizzes[i].image}>
+        <figcaption>
+          ${apiQuizzes[i].title}
+        </figcaption>               
+      </div>`;
+
+      divApiQuizzes.innerHTML += quizz;
+    }
+}
+renderizarQuizzes();
 
 
 //** JAVASCRIPT EMERSON**//

@@ -1,7 +1,7 @@
 //** JAVASCRIPT MANUELA**//
 function createQuizz(){
     const openWindow = document.querySelector('.open-window');
-    const createWindow = document.querySelector('.screen-basic-informations hidden');
+    const createWindow = document.querySelector('.screen-basic-informations');
 
     openWindow.classList.add('hidden');
     createWindow.classList.remove('hidden');
@@ -9,10 +9,10 @@ function createQuizz(){
 
 function openQuizz(){
     const openWindow = document.querySelector('.open-window');
-    const createWindow = document.querySelector('.screen-basic-informations hidden');
+    const quizzWindow = document.querySelector('.quizz-showpage');
 
     openWindow.classList.add('hidden');
-    createWindow.classList.remove('hidden');
+    quizzWindow.classList.remove('hidden');
 }
 
 

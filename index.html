@@ -17,7 +17,7 @@
 
       <div class="content-open-window">
         <div class="container-user-quizz">
-          <div class="create-quizz">
+          <div class="create-quizz hidden">
             <div class="no-quizz-info">
               Você não criou nenhum quizz ainda :(
             </div>
@@ -27,12 +27,12 @@
             </button>
           </div>
 
-          <div class="created-quizz hidden">
+          <div class="created-quizz">
             <div class="title-page1">
               Seus Quizzes
               <ion-icon
                 class="create-quizz-button-2"
-                name="add-circle-sharp"
+                name="add-circle-sharp" onclick="createQuizz(this)"
               ></ion-icon>
             </div>
 

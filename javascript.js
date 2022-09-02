@@ -396,19 +396,20 @@ function failToLoadQuizz(quizz) {
 }
 
 function getChosenQuizz (){
+  //Utilizando quizz modelo para trabalhar
   const promessa = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/11263');
   promessa.then(chosenQuizzArrived);
   promessa.catch(failToLoadQuizz)
 }
 
-getChosenQuizz()
+//getChosenQuizz()
 
 
 
 // Funções com lógica do jogo após clique na resposta
 
 function rightOrWrong(element) {
-  contador++;
+ 
   container = element.parentElement.children;
   
   if(element.classList.contains("true")) {
@@ -427,9 +428,11 @@ function rightOrWrong(element) {
   
   }
 
-  setInterval(() =>{
-    allQuestions[contador].scrollIntoView(false);
-  },2000)
-
+  if(contador<allQuestions.length-1) {
+    contador++;
+    setTimeout(() => {
+      allQuestions[contador].scrollIntoView(false);
+    },2000)
+  }
   
 }

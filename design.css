@@ -408,8 +408,8 @@ body{
     flex-direction: column;
     justify-content: center;
 
-    margin-top: 154px;
-    box-sizing: border-box;
+    margin-top: 77px;
+    margin-bottom: 211px;
   }
 
 .hidden{

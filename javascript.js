@@ -38,7 +38,7 @@ function renderizarQuizzes(){
     const divApiQuizzes = document.querySelector('.api-quizzes .quizzes');
     divApiQuizzes.innerHTML = '';
 
-    for(let i = 0; i < apiQuizzes.length; i++){
+    for(let i = 0; i < 6; i++){
         let quizz = `<div class="quizz" onclick="openQuizz(this)">
         <img src=${apiQuizzes[i].image}>
         <figcaption>

@@ -1,5 +1,5 @@
-//** JAVASCRIPT MANUELA**//
 
+/* JAVASCRIPT MANUELA*/
 let apiQuizzes = [];
 
 function createQuizz(){
@@ -51,23 +51,31 @@ function renderizarQuizzes(){
 }
 renderizarQuizzes();
 
+
+
+
 //** JAVASCRIPT EMERSON**//
 
 const button_1 = document.querySelector('.screen-basic-informations button');
-const button_create_questions = document.querySelector('.screen-create-questions .button-next-levels')
+const button_create_levels = document.querySelector('.screen-create-questions .button-next-levels')
+const button_finish_quizz = document.querySelector('.screen-create-levels .finish-quizz')
 let input1 = document.querySelector('.screen-basic-informations .input1');
 let input2 = document.querySelector('.screen-basic-informations .input2');
 let input3 = document.querySelector('.screen-basic-informations .input3');
 let input4 = document.querySelector('.screen-basic-informations .input4');
 let number_questions;
+let number_levels;
 const next_screen_2 = document.querySelector('.screen-create-questions')
+let cont3;
 
 
 let check;
 
 
+
 button_1.addEventListener('click', () => 
     {
+      console.log('clicou')
         try {
             let check_url = new URL(`${input2.value}`)
             check = true;
@@ -85,6 +93,7 @@ button_1.addEventListener('click', () =>
             next_screen_2.classList.remove('hidden');
             
             number_questions = Number(input3.value);
+            number_levels = Number(input4.value);
             let cont = 0;
 
             /*FUNÇÃO QUE COLOCA A QUANTIDADE DE PERGUNTAS QUE FOI SELECIONADA*/ 
@@ -146,7 +155,7 @@ button_1.addEventListener('click', () =>
 )
 
 
-button_create_questions.addEventListener('click', () => {
+button_create_levels.addEventListener('click', () => {
     let cont2 = 0;
     let verificador =0;
     
@@ -190,12 +199,7 @@ button_create_questions.addEventListener('click', () => {
             alert(`Há algo de errado na sua Pergunta ${cont2+1}. Por favor, verifique as informações digitadas`);
         }
         
-        if (verificador === 3){
-            alert("PRÓXIMA PÁGINA");
-            next_screen_2.classList.add('hidden');
-        } else{
-            console.log('não verificado')
-        }
+       
         console.log(txtquestion.value.length);
         console.log(bgtxtquestion.value.length);
         console.log(corret_anwers.value);
@@ -209,7 +213,96 @@ button_create_questions.addEventListener('click', () => {
         cont2++
     }
 
+    if (verificador === number_questions){
+      const create_levels = () => {
+        alert("PRÓXIMA PÁGINA");
+        next_screen_2.classList.add('hidden');
+        const screen_create_levels = document.querySelector('.screen-create-levels');
+        const put_levels = document.querySelector('.screen-create-levels .create-levels');
+        screen_create_levels.classList.remove('hidden');
+        cont3 = 0;
+
+        while(cont3 < number_levels){
+          put_levels.innerHTML = put_levels.innerHTML + `
+            <div class="levels1 level${(cont3+1).toString()}">
+              <div class="header-levels">
+                <h3>Nível ${cont3+1}</h3>
+                <button onclick="alternate_level(this)"> <ion-icon name="create-outline"></ion-icon> </button>
+              </div>
+            
+              <div class="hide-level">
+                <input class="title_level" type="text" placeholder="Título do nível">
+                <input class="pcrtmin" type="text" placeholder="% de acerto mínima">
+                <input class="url_img_level" type="text" placeholder="URL da imagem do nível">
+                <input class="dcpn_level" type="text" placeholder="Descrição do Nível">
+              </div>
+          
+            </div>
+          `
+          cont3++;
+        }
+        
+
+      }  
+      
+      create_levels();
+
+    } else{
+        console.log('não verificado')
+    }
    
+
+})
+
+button_finish_quizz.addEventListener('click', () => {
+  let cont4 = 0;
+  let verifica_zero;
+  let verificador2 = 0;
+  while(cont4 < number_levels){
+    const input_level_title = document.querySelector(`.screen-create-levels .level${(cont4+1).toString()} .title_level`)
+    const input_pcrtmin = document.querySelector(`.screen-create-levels .level${(cont4+1).toString()} .pcrtmin`)
+    const input_url_img_level = document.querySelector(`.screen-create-levels .level${(cont4+1).toString()} .url_img_level`)
+    const input_dcpn_level = document.querySelector(`.screen-create-levels .level${(cont4+1).toString()} .dcpn_level`)
+    console.log(input_level_title.value)
+    console.log(input_pcrtmin.value)
+    console.log(input_url_img_level.value)
+    console.log(input_dcpn_level.value)
+
+    if (Number(input_pcrtmin.value) === 0 && verifica_zero === undefined ){
+        verifica_zero = true;
+    } 
+
+    let check3;
+
+    try {
+      let check_url_level = new URL(`${input_url_img_level.value}`)
+      check3 = true;
+    } catch {
+      check3 = false;
+    }
+
+
+    if(input_level_title.value.length >= 10 && verifica_zero === true && Number(input_pcrtmin.value) >= 0 && Number(input_pcrtmin.value) <= 100 && input_pcrtmin.value !== "" &&
+    input_dcpn_level.value.length >= 30 && check3 == true)
+    {
+      alert('PASSOU +1')
+      verificador2++
+    } else {
+      alert(`Existe algum erro no Nível ${cont4+1}`)
+    }
+
+    console.log(verificador2);
+    cont4++
+  }
+
+  if (verificador2 === number_levels){
+    const hidden_levels = document.querySelector('.screen-create-levels')
+    hidden_levels.classList.add('hidden')
+  }
+    
+ 
+  
+
 
 })
 
@@ -223,6 +316,16 @@ let alternate_question = (button_2) => {
     console.log(button_alternate)
 
     
+}
+
+let alternate_level = (button_3) => {
+  const button_alternate2 = button_3.parentNode.parentNode;
+  const hide_level = button_alternate2.querySelector('.hide-level');
+  hide_level.classList.toggle('hidden')
+
+  console.log(button_alternate2)
+
+  
 }
 
 

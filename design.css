@@ -13,7 +13,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    font-family: Roboto;
 }
 
 .quizz-criation .header-style{
@@ -46,8 +46,12 @@ body{
 
 
     /*CSS SCREEN-BASIC-INFORMATIONS*/
+
+
 .screen-basic-informations,
-.screen-create-questions{
+.screen-create-questions,
+.screen-create-levels
+{
     width: 600px;
     height: 100%;
     margin-top: 69px;
@@ -59,7 +63,10 @@ body{
 
 }
 
-.screen-basic-informations h2, .screen-create-questions h2{
+.screen-basic-informations h2,
+.screen-create-questions h2,
+.screen-create-levels h2
+ {
     font-size: 23px;
     font-weight: 700;
     line-height: 26.95px;
@@ -68,7 +75,9 @@ body{
 
 }
 
-.screen-basic-informations .basic-informations{
+.screen-basic-informations .basic-informations,
+.screen-create-levels .create-levels
+{
     width: 600px;
     height: 100%;
     background-color: #FFFFFF;
@@ -81,7 +90,12 @@ body{
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
-.screen-basic-informations .basic-informations input, .screen-create-questions .create-questions input{
+
+
+.screen-basic-informations .basic-informations input,
+ .screen-create-questions .create-questions input,
+ .screen-create-levels .create-levels input
+ {
     width: 564px;
     height: 46px;
     font-size: 15px;
@@ -92,12 +106,16 @@ body{
     padding-left: 15px;
 }
 
-.screen-basic-informations .basic-informations input::placeholder{
+.screen-basic-informations .basic-informations input::placeholder,
+.screen-create-questions .create-questions input::placeholder,
+.screen-create-levels .create-levels input::placeholder
+{
     color: #D1D1D1;
 }
 
 .screen-basic-informations button,
-.screen-create-questions .button-next-levels
+.screen-create-questions .button-next-levels,
+.screen-create-levels .finish-quizz
 {
     width: 370px;
     height: 54px;
@@ -108,6 +126,8 @@ body{
     background-color: #EC362D;
     color: #FFFFFF;
 }
+
+
 
     /*CSS SCREEN-CREATE-QUESTION*/
 
@@ -137,18 +157,23 @@ body{
     width: 583px;
 }
 
-.screen-create-questions .create-questions .first-question ion-icon{
+.screen-create-questions .create-questions .first-question ion-icon,
+.header-levels ion-icon
+{
     font-size: 23px;
 }
 
-.screen-create-questions .create-questions .first-question button{
+.screen-create-questions .create-questions .first-question button,
+.header-levels button
+{
     background-color: #EC362D;
 }
 
 
 .screen-create-questions .create-questions .first-question h3,
 .screen-create-questions .create-questions .corret-answer h3,
-.screen-create-questions .create-questions .incorret-answer h3
+.screen-create-questions .create-questions .incorret-answer h3,
+.screen-create-levels .create-levels h3
 {
     font-size: 20px;
     font-weight: 700;
@@ -169,6 +194,20 @@ body{
     background-color: red;
 
 }
+
+/*TELA QUIZZ LEVEL*/
+.header-levels{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    background-color: aqua;
+    width: 600px;
+}
+
+
+
+
+
 
 /* Tela 2 - EXIBIÇÃO DE UM QUIZZ*/
 

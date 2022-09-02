@@ -4,7 +4,7 @@ let apiQuizzes = [];
 
 function createQuizz(){
     const openWindow = document.querySelector('.open-window');
-    const createWindow = document.querySelector('.quizz-criation');
+    const createWindow = document.querySelector('.screen-basic-informations');
 
     openWindow.classList.add('hidden');
     createWindow.classList.remove('hidden');
@@ -38,7 +38,7 @@ function renderizarQuizzes(){
     const divApiQuizzes = document.querySelector('.api-quizzes .quizzes');
     divApiQuizzes.innerHTML = '';
 
-    for(let i = 0; i < 6; i++){
+      for(let i = 0; i < apiQuizzes.length; i++){
         let quizz = `<div class="quizz" onclick="openQuizz(this)">
         <img src=${apiQuizzes[i].image}>
         <figcaption>
@@ -47,9 +47,8 @@ function renderizarQuizzes(){
       </div>`;
 
       divApiQuizzes.innerHTML += quizz;
-    }
+      }
 }
-renderizarQuizzes();
 
 //** JAVASCRIPT EMERSON**//
 

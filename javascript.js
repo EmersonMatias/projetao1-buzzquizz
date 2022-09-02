@@ -51,8 +51,8 @@ function renderizarQuizzes(){
 }
 renderizarQuizzes();
 
-
 //** JAVASCRIPT EMERSON**//
+
 const button_1 = document.querySelector('.screen-basic-informations button');
 const button_create_questions = document.querySelector('.screen-create-questions .button-next-levels')
 let input1 = document.querySelector('.screen-basic-informations .input1');
@@ -75,8 +75,9 @@ button_1.addEventListener('click', () =>
             check = false;
           }
 
-        
+    
           /*CONDIÇÃO PARA SEGUIR PARA A PRÓXIMA TELA*/ 
+          
         if(input1.value.length >= 20 && input1.value.length <= 65 && check === true && Number(input3.value) >= 3 && Number(input4.value) >= 2 ){
             alert('PRÓXIMA TELA');
             const next_screen_1 = document.querySelector(".screen-basic-informations");
@@ -183,7 +184,7 @@ button_create_questions.addEventListener('click', () => {
 
         
         /*VERIFICA SE TODOS OS REQUISITOS SÃO SATISFEITOS NA HORA DA CRIAÇÃO DO QUIZZ*/
-        if(txtquestion.value.length >= 20 && corret_anwers.value !== "" && check2 === true && incorret1.value !== "" && bgtxtquestion.value[0] === "#" && bgtxtquestion.value.length === 7 ){
+       if(txtquestion.value.length >= 20 && corret_anwers.value !== "" && check2 === true && incorret1.value !== "" && bgtxtquestion.value[0] === "#" && bgtxtquestion.value.length === 7 ){
             verificador++
         }else {
             alert(`Há algo de errado na sua Pergunta ${cont2+1}. Por favor, verifique as informações digitadas`);
@@ -224,3 +225,109 @@ let alternate_question = (button_2) => {
     
 }
 
+
+// JAVASCRIPT VICTOR LEONE DE OLIVEIRA
+let chosenQuizz;
+let quizzHeader = document.querySelector(".showpage-second-header")
+let questionBox = document.querySelector(".question-container-outline")
+let rightAnswers=0
+let allQuestions;
+let contador=0;
+
+//Função auxiliar ;
+function comparador() { 
+	return Math.random() - 0.5; 
+}
+
+function renderChosenQuizz(object) {
+
+  let arrayOfQuestions = object.questions;
+  quizzHeader.innerHTML = 
+  `<img src="${object.image}">
+  <h3>${object.title}</h3>`
+
+  for (let index = 0; index < arrayOfQuestions.length; index++) {
+    let questionItem= arrayOfQuestions[index]
+    
+    questionBox.innerHTML +=
+    `<div class="question-container">
+      <div class="question ${index}" data-identifier="question" style="background-Color:${questionItem.color};">${questionItem.title}</div>
+       <div class="answer-container ${index}"></div>
+    </div>`
+  }
+
+  let answerContainer = document.querySelectorAll(".answer-container");
+  
+    for (let index = 0; index < arrayOfQuestions.length; index++) {
+      let arrayOfAnswers= arrayOfQuestions[index].answers;
+      arrayOfAnswers.sort(comparador);
+      for (let jdex = 0; jdex < arrayOfAnswers.length; jdex++) {
+        let answerItem = arrayOfAnswers[jdex];
+        console.log(jdex);
+        console.log(arrayOfAnswers[jdex])
+        console.log(answerContainer[jdex])
+        answerContainer[index].innerHTML += 
+        `<figure class="quizz-answer ${jdex} ${answerItem.isCorrectAnswer}" data-identifier="answer" onclick ="rightOrWrong(this)">
+     
+        <div class="image">
+          <img src="${answerItem.image}">
+        </div>
+  
+        <figcaption><p>${answerItem.text}</p></figcaption>
+  
+      </figure>`
+  
+      }
+    
+
+    }
+  allQuestions = document.querySelectorAll(".question-container")
+}
+
+function chosenQuizzArrived(quizz) {
+  chosenQuizz =quizz.data;
+  renderChosenQuizz(chosenQuizz)
+}
+
+function failToLoadQuizz(quizz) {
+  console.log (quizz)
+}
+
+function getChosenQuizz (){
+  const promessa = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/11263');
+  promessa.then(chosenQuizzArrived);
+  promessa.catch(failToLoadQuizz)
+}
+
+getChosenQuizz()
+
+
+
+// Funções com lógica do jogo após clique na resposta
+
+function rightOrWrong(element) {
+  contador++;
+  container = element.parentElement.children;
+  
+  if(element.classList.contains("true")) {
+    rightAnswers++
+  }
+
+  for (let index = 0; index < container.length; index++) {
+    container[index].setAttribute("onclick","")
+    
+    if (container[index].classList !== element.classList) {
+      container[index].classList.add("afterClickingStyle")}
+       
+    if(container[index].classList.contains("true")) {
+      container[index].classList.add("trueAnswer")
+    } else {container[index].classList.add("falseAnswer")}  
+  
+  }
+
+  setInterval(() =>{
+    allQuestions[contador].scrollIntoView(false);
+  },2000)
+
+  
+}

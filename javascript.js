@@ -1,5 +1,5 @@
 
-/* JAVASCRIPT MANUELA*/
+/* JAVASCRIPT MANUELA
 let apiQuizzes = [];
 
 function createQuizz(){
@@ -50,7 +50,7 @@ function renderizarQuizzes(){
     }
 }
 renderizarQuizzes();
-
+*/
 
 
 
@@ -67,6 +67,8 @@ let number_questions;
 let number_levels;
 const next_screen_2 = document.querySelector('.screen-create-questions')
 let cont3;
+let quizz_object;
+
 
 
 let check;
@@ -160,16 +162,16 @@ button_create_levels.addEventListener('click', () => {
     let verificador =0;
     
     while(cont2 < number_questions){
-        const txtquestion = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .input_txtquestion`)
-        const bgtxtquestion = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .input_bgtxtquestion`)
-        const corret_anwers = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .answer`)
-        const corret_anwers_url = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .url-corret-anwer`)
-        const incorret1 = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .incorret-1`)
-        const incorret1_url = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .url-incorret-1`)
-        const incorret2 = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .incorret-2`)
-        const incorret2_url = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .url-incorret-2`)
-        const incorret3 = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .incorret-3`)
-        const incorret3_url = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .url-incorret-3`)
+        let txtquestion = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .input_txtquestion`)
+        let bgtxtquestion = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .input_bgtxtquestion`)
+        let corret_anwers = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .answer`)
+        let corret_anwers_url = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .url-corret-anwer`)
+        let incorret1 = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .incorret-1`)
+        let incorret1_url = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .url-incorret-1`)
+        let incorret2 = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .incorret-2`)
+        let incorret2_url = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .url-incorret-2`)
+        let incorret3 = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .incorret-3`)
+        let incorret3_url = document.querySelector(`.screen-create-questions .question_${(cont2+1).toString()} .url-incorret-3`)
 
         let check2;
 
@@ -180,7 +182,17 @@ button_create_levels.addEventListener('click', () => {
             if (check_url4 === "" && check_url5 === ""){
                 let check_url2 = new URL(`${corret_anwers_url.value}`)
                 let check_url3 = new URL(`${incorret1_url.value}`)
-            } else{
+            }else if(check_url5 === ""){
+                let check_url2 = new URL(`${corret_anwers_url.value}`)
+                let check_url3 = new URL(`${incorret1_url.value}`)
+                check_url4 = new URL(`${incorret2_url.value}`)
+            } 
+            else if(check_url4 === ""){
+              let check_url2 = new URL(`${corret_anwers_url.value}`)
+              let check_url3 = new URL(`${incorret1_url.value}`)
+              check_url5 = new URL(`${incorret3_url.value}`)
+            } 
+            else{
                 let check_url2 = new URL(`${corret_anwers_url.value}`)
                 let check_url3 = new URL(`${incorret1_url.value}`)
                 check_url4 = new URL(`${incorret2_url.value}`)
@@ -195,7 +207,15 @@ button_create_levels.addEventListener('click', () => {
         /*VERIFICA SE TODOS OS REQUISITOS SÃO SATISFEITOS NA HORA DA CRIAÇÃO DO QUIZZ*/
        if(txtquestion.value.length >= 20 && corret_anwers.value !== "" && check2 === true && incorret1.value !== "" && bgtxtquestion.value[0] === "#" && bgtxtquestion.value.length === 7 ){
             verificador++
-        }else {
+        }else if (txtquestion.value.length >= 20 && corret_anwers.value !== "" && check2 === true && incorret1.value !== "" && bgtxtquestion.value[0] === "#" && bgtxtquestion.value.length === 7 &&
+        incorret2.value !== ""
+        ){
+            verificador++
+        } else if (txtquestion.value.length >= 20 && corret_anwers.value !== "" && check2 === true && incorret1.value !== "" && bgtxtquestion.value[0] === "#" && bgtxtquestion.value.length === 7 &&
+        incorret2.value !== "" && incorret3.value !== ""){
+            verificador++
+        }
+        else {
             alert(`Há algo de errado na sua Pergunta ${cont2+1}. Por favor, verifique as informações digitadas`);
         }
         
@@ -295,11 +315,142 @@ button_finish_quizz.addEventListener('click', () => {
     cont4++
   }
 
+
+  //OBJETO QUIZZ QUE SERÁ ENVIADO
+  let cont5 =0;
+
+  quizz_object = {
+    title: input1.value,
+    image: input2.value,
+    questions: [],
+    levels: []
+  }
+
+  while(cont5 < number_questions){
+    let txtquestion = document.querySelector(`.screen-create-questions .question_${(cont5+1).toString()} .input_txtquestion`)
+    let bgtxtquestion = document.querySelector(`.screen-create-questions .question_${(cont5+1).toString()} .input_bgtxtquestion`)
+    let corret_anwers = document.querySelector(`.screen-create-questions .question_${(cont5+1).toString()} .answer`)
+    let corret_anwers_url = document.querySelector(`.screen-create-questions .question_${(cont5+1).toString()} .url-corret-anwer`)
+    let incorret1 = document.querySelector(`.screen-create-questions .question_${(cont5+1).toString()} .incorret-1`)
+    let incorret1_url = document.querySelector(`.screen-create-questions .question_${(cont5+1).toString()} .url-incorret-1`)
+    let incorret2 = document.querySelector(`.screen-create-questions .question_${(cont5+1).toString()} .incorret-2`)
+    let incorret2_url = document.querySelector(`.screen-create-questions .question_${(cont5+1).toString()} .url-incorret-2`)
+    let incorret3 = document.querySelector(`.screen-create-questions .question_${(cont5+1).toString()} .incorret-3`)
+    let incorret3_url = document.querySelector(`.screen-create-questions .question_${(cont5+1).toString()} .url-incorret-3`)
+
+    if (corret_anwers.value !== "" && corret_anwers_url.value !== "" && incorret1.value !== "" && incorret1_url.value !== ""  ) {
+      quizz_object.questions.push({
+        title: txtquestion.value,
+        color: bgtxtquestion.value,
+        answers: [
+          {
+            text: corret_anwers.value,
+            image: corret_anwers_url.value,
+            isCorrectAnswer: true
+          },
+          {
+            text: incorret1.value,
+            image: incorret1_url.value,
+            isCorrectAnswer: false
+          }
+        ]
+      })
+    } else if (corret_anwers.value !== "" && corret_anwers_url.value !== "" && incorret1.value !== "" && incorret1_url.value !== "" && incorret2.value !== "" && incorret2_url.value) {
+      quizz_object.questions.push({
+        title: txtquestion.value,
+        color: bgtxtquestion.value,
+        answers: [
+          {
+            text: corret_anwers.value,
+            image: corret_anwers_url.value,
+            isCorrectAnswer: true
+          },
+          {
+            text: incorret1.value,
+            image: incorret1_url.value,
+            isCorrectAnswer: false
+          },
+          {
+            text: incorret2.value,
+            image: incorret2_url.value,
+            isCorrectAnswer: false
+          }]
+        })
+    } else if (corret_anwers.value !== "" && corret_anwers_url.value !== "" && incorret1.value !== "" && incorret1_url.value !== "" && incorret2.value !== "" && incorret2_url.value
+    && incorret3.value !== "" && incorret3_url.value !== ""){
+      quizz_object.questions.push({
+        title: txtquestion.value,
+        color: bgtxtquestion.value,
+        answers: [
+          {
+            text: corret_anwers.value,
+            image: corret_anwers_url.value,
+            isCorrectAnswer: true
+          },
+          {
+            text: incorret1.value,
+            image: incorret1_url.value,
+            isCorrectAnswer: false
+          },
+          {
+            text: incorret2.value,
+            image: incorret2_url.value,
+            isCorrectAnswer: false
+          },
+          {
+            text: incorret3.value,
+            image: incorret3_url.value,
+            isCorrectAnswer: false
+          }
+        ]
+      })
+    }
+
+    cont5++;
+  }
+
+  let cont6 = 0;
+
+  while(cont6 < number_levels) {
+    let inpit_title_level = document.querySelector(`.screen-create-levels .create-levels .level${cont6+1} .title_level`)
+    let inpit_pcrtmin= document.querySelector(`.screen-create-levels .create-levels .level${cont6+1} .pcrtmin`)
+    let inpit_url_img_level= document.querySelector(`.screen-create-levels .create-levels .level${cont6+1} .url_img_level`)
+    let inpit_dcpn_level= document.querySelector(`.screen-create-levels .create-levels .level${cont6+1} .dcpn_level`)
+
+      
+    quizz_object.levels.push({
+        title: inpit_title_level.value,
+        image: inpit_url_img_level.value,
+        text: inpit_dcpn_level.value,
+        minValue: Number(inpit_pcrtmin.value)
+    })
+
+    cont6++;
+
+  }
+
+  console.log(quizz_object)
+
+
   if (verificador2 === number_levels){
     const hidden_levels = document.querySelector('.screen-create-levels')
     hidden_levels.classList.add('hidden')
+
+    const send_quizz = () => {
+      axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', quizz_object)
+        .then((response) => {
+          console.log('Enviou')
+          console.log(response)
+        })
+        .catch (() =>{
+          console.log('algo deu errado')
+        })  
+    }
+
+    send_quizz();
+
   }
-    
+
  
   
 
@@ -328,7 +479,7 @@ let alternate_level = (button_3) => {
   
 }
 
-
+/*
 // JAVASCRIPT VICTOR LEONE DE OLIVEIRA
 let chosenQuizz;
 let quizzHeader = document.querySelector(".showpage-second-header")
@@ -434,3 +585,4 @@ function rightOrWrong(element) {
 
   
 }
+*/

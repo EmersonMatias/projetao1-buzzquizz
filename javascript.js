@@ -1,6 +1,7 @@
 
 /* JAVASCRIPT MANUELA*/
 let apiQuizzes = [];
+let userQuizzes = [];
 let id;
 
 function createQuizz(){
@@ -50,6 +51,29 @@ function renderizarQuizzes(){
 
       divApiQuizzes.innerHTML += quizz;
       }
+}
+
+function userQuizz () {
+  if (userQuizzes.length !==0){
+    const noUserQuizz = document.querySelector('.create-quizz');
+    const userQuizz = document.querySelector('.created-quizz');
+
+    noUserQuizz.classList.add('hidden');
+    userQuizz.classList.remove('hidden');
+    const divUserQuizzes = document.querySelector('.container-user-quizz .quizzes');
+    divUserQuizzes.innerHTML = '';
+
+      for(let i = 0; i < userQuizzes.length; i++){
+        let quizz = `<div class="quizz" onclick="openQuizz(this)">
+        <img src="https://http.cat/411.jpg">
+        <figcaption>
+          Acerte os personagens corretos dos Simpsons e prove seu amor!
+        </figcaption>               
+      </div>`
+
+      divUserQuizzes.innerHTML += quizz;
+       }
+  }
 }
 
 

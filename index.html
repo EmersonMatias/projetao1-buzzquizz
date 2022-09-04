@@ -22,7 +22,7 @@
               Você não criou nenhum quizz ainda :(
             </div>
 
-            <button class="create-quizz-button-1" onclick="createQuizz(this)">
+            <button class="create-quizz-button-1" data-identifier="create-quizz" onclick="createQuizz(this)">
               Criar Quizz
             </button>
           </div>
@@ -32,11 +32,11 @@
               Seus Quizzes
               <ion-icon
                 class="create-quizz-button-2"
-                name="add-circle-sharp" onclick="createQuizz(this)"
+                name="add-circle-sharp" data-identifier="create-quizz" onclick="createQuizz(this)"
               ></ion-icon>
             </div>
 
-            <div class="quizzes">
+            <div class="quizzes" data-identifier="user-quizzes">
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@
         <div class="api-quizzes">
           <div class="title-page1">Todos os Quizzes</div>
 
-          <div class="quizzes">
+          <div class="quizzes" data-identifier="general-quizzes">
           </div>
         </div>
       </div>

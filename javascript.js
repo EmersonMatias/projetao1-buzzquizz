@@ -42,7 +42,7 @@ function renderizarQuizzes(){
     divApiQuizzes.innerHTML = '';
 
       for(let i = 0; i < apiQuizzes.length; i++){
-        let quizz = `<div class="quizz " onclick="openQuizz(${apiQuizzes[i].id})">
+        let quizz = `<div class="quizz" data-identifier="quizz-card" onclick="openQuizz(${apiQuizzes[i].id})">
         <img src=${apiQuizzes[i].image}>
         <figcaption>
           ${apiQuizzes[i].title}
@@ -64,7 +64,7 @@ function userQuizz () {
     divUserQuizzes.innerHTML = '';
 
       for(let i = 0; i < userQuizzes.length; i++){
-        let quizz = `<div class="quizz" onclick="openQuizz(this)">
+        let quizz = `<div class="quizz" data-identifier="quizz-card" onclick="openQuizz(this)">
         <img src="https://http.cat/411.jpg">
         <figcaption>
           Acerte os personagens corretos dos Simpsons e prove seu amor!

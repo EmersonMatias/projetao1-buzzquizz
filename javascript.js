@@ -1,21 +1,22 @@
 
-/* JAVASCRIPT MANUELA
+/* JAVASCRIPT MANUELA*/
 let apiQuizzes = [];
-
+let id;
 function createQuizz(){
     const openWindow = document.querySelector('.open-window');
-    const createWindow = document.querySelector('.quizz-criation');
+    const createWindow = document.querySelector('.screen-basic-informations');
 
     openWindow.classList.add('hidden');
     createWindow.classList.remove('hidden');
 }
 
-function openQuizz(){
+function openQuizz(element){
     const openWindow = document.querySelector('.open-window');
     const quizzWindow = document.querySelector('.quizz-showpage');
 
     openWindow.classList.add('hidden');
     quizzWindow.classList.remove('hidden');
+    getChosenQuizz(element);
 }
 
 function getQuizzes (){
@@ -28,7 +29,7 @@ getQuizzes();
 function quizzesArrived(resposta) {
     console.log('Deu tudo certo');
 
-    apiQuizzes = resposta.data;
+    apiQuizzes = resposta.data; 
 
     console.log(apiQuizzes);
     renderizarQuizzes();
@@ -38,8 +39,8 @@ function renderizarQuizzes(){
     const divApiQuizzes = document.querySelector('.api-quizzes .quizzes');
     divApiQuizzes.innerHTML = '';
 
-    for(let i = 0; i < 6; i++){
-        let quizz = `<div class="quizz" onclick="openQuizz(this)">
+      for(let i = 0; i < apiQuizzes.length; i++){
+        let quizz = `<div class="quizz " onclick="openQuizz(${apiQuizzes[i].id})">
         <img src=${apiQuizzes[i].image}>
         <figcaption>
           ${apiQuizzes[i].title}
@@ -47,10 +48,8 @@ function renderizarQuizzes(){
       </div>`;
 
       divApiQuizzes.innerHTML += quizz;
-    }
+      }
 }
-renderizarQuizzes();
-*/
 
 
 
@@ -68,6 +67,8 @@ let number_levels;
 const next_screen_2 = document.querySelector('.screen-create-questions')
 let cont3;
 let quizz_object;
+let waiting_answer;
+let created_quizz;
 
 
 
@@ -440,7 +441,17 @@ button_finish_quizz.addEventListener('click', () => {
       axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', quizz_object)
         .then((response) => {
           console.log('Enviou')
-          console.log(response)
+          console.log(response.data.image)
+          console.log(response.data.title)
+          console.log(response.data.id)
+          idcreated_quizz = response.data.id
+          let screen_sucess_create = document.querySelector('.screen-success-create')
+          screen_sucess_create.classList.remove('hidden')
+          let screen_sucess_img =  document.querySelector('.screen-success-create .imgquizz')
+          screen_sucess_img.innerHTML = `
+          <img src="${response.data.image}">
+          <figcaption>${response.data.title}</figcaption>
+          `
         })
         .catch (() =>{
           console.log('algo deu errado')
@@ -451,7 +462,6 @@ button_finish_quizz.addEventListener('click', () => {
 
   }
 
- 
   
 
 
@@ -479,7 +489,7 @@ let alternate_level = (button_3) => {
   
 }
 
-/*
+
 // JAVASCRIPT VICTOR LEONE DE OLIVEIRA
 let chosenQuizz;
 let quizzHeader = document.querySelector(".showpage-second-header")
@@ -487,6 +497,7 @@ let questionBox = document.querySelector(".question-container-outline")
 let rightAnswers=0
 let allQuestions;
 let contador=0;
+let clickCounts=0;
 
 //Função auxiliar ;
 function comparador() { 
@@ -517,9 +528,6 @@ function renderChosenQuizz(object) {
       arrayOfAnswers.sort(comparador);
       for (let jdex = 0; jdex < arrayOfAnswers.length; jdex++) {
         let answerItem = arrayOfAnswers[jdex];
-        console.log(jdex);
-        console.log(arrayOfAnswers[jdex])
-        console.log(answerContainer[jdex])
         answerContainer[index].innerHTML += 
         `<figure class="quizz-answer ${jdex} ${answerItem.isCorrectAnswer}" data-identifier="answer" onclick ="rightOrWrong(this)">
      
@@ -547,28 +555,29 @@ function failToLoadQuizz(quizz) {
   console.log (quizz)
 }
 
-function getChosenQuizz (){
-  const promessa = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/11263');
+function getChosenQuizz (id){
+  //Utilizando quizz modelo para trabalhar
+  const promessa = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`);
   promessa.then(chosenQuizzArrived);
   promessa.catch(failToLoadQuizz)
 }
 
-getChosenQuizz()
 
 
 
 // Funções com lógica do jogo após clique na resposta
 
 function rightOrWrong(element) {
-  contador++;
+ 
   container = element.parentElement.children;
-  
+
   if(element.classList.contains("true")) {
     rightAnswers++
   }
 
   for (let index = 0; index < container.length; index++) {
     container[index].setAttribute("onclick","")
+    container[index].classList.add("clicked")
     
     if (container[index].classList !== element.classList) {
       container[index].classList.add("afterClickingStyle")}
@@ -578,11 +587,109 @@ function rightOrWrong(element) {
     } else {container[index].classList.add("falseAnswer")}  
   
   }
+  console.log("antes do if")
+  if(contador<allQuestions.length-1) {
+    contador++;
+    console.log("é "+ contador)
+    setTimeout(() => {
+      let questions = document.querySelectorAll(".question")
+      questions[contador].scrollIntoView(true);
+    },2000)
+  }
 
-  setInterval(() =>{
-    allQuestions[contador].scrollIntoView(false);
-  },2000)
-
-  
+ checkNumberToFinish()
 }
-*/
+
+function checkNumberToFinish() {
+  clickCounts++
+  let questions = document.querySelectorAll(".question")
+  if (clickCounts===questions.length) {
+    let levelResult = Math.round(((rightAnswers/questions.length)*100).toFixed(0));
+    displayResult(levelResult);
+  }
+}
+
+function displayResult(level) {
+  let finalLevel =0;
+  for (let index = chosenQuizz.levels.length-1 ; index >=0; index--) {
+    if (level>=chosenQuizz.levels[index].minValue) {
+      return renderFinalBox(index, level);
+    };
+  }
+}
+
+function renderFinalBox(index, level) {
+  let correctLevel = chosenQuizz.levels[index];
+  questionBox.innerHTML += 
+  
+  `<div class="final-container" >
+    <div class="question result">
+    <p>${level}% de acerto: ${correctLevel.title} </p>
+    </div>
+    <div class="result-container">
+
+      <figure class="quizz-result">
+     
+        <div class="image">
+          <img src="${correctLevel.image}">
+        </div>
+  
+      <figcaption class ="result-text"><p>${correctLevel.text}</p></figcaption>
+  
+      </figure>
+   
+    </div>
+  </div>
+  
+  <button class="Reiniciar-Button" onclick ="reinitiateGame()">Reiniciar Quizz</button>
+    <p class = "home-link" onclick = "returnHome()">Voltar para home</p>
+  `
+  let homeLink = document.querySelector(".home-link")
+  setTimeout(() => {
+    homeLink.scrollIntoView(false);
+  }, 2000);
+
+}
+
+function reinitiateGame() {
+  let clickedContainer = document.querySelectorAll(".clicked");
+  let allAnswers = document.querySelectorAll(".quizz-answer")
+
+  for (let index = 0; index < clickedContainer.length; index++) {
+    clickedContainer[index].setAttribute("onclick","rightOrWrong(this)")  
+    clickedContainer[index].classList.remove("afterClickingStyle")  
+    if(clickedContainer[index].classList.contains("true")) {
+      clickedContainer[index].classList.remove("trueAnswer")
+    } else {clickedContainer[index].classList.remove("falseAnswer")}  
+  }
+  
+  rightAnswers=0
+  contador=0;
+  clickCounts=0;
+
+  let resultCOntainerTobeErased = document.querySelector(".final-container")
+  let button = document.querySelector(".Reiniciar-Button");
+  let homeLink = document.querySelector(".home-link")
+  
+  resultCOntainerTobeErased.parentNode.removeChild(resultCOntainerTobeErased);
+  button.parentNode.removeChild(button);
+  homeLink.parentNode.removeChild(homeLink);
+
+  let header =document.querySelector(".showpage-second-header")
+  
+  header.scrollIntoView(true);
+
+}
+
+function returnHome () {
+  const openWindow = document.querySelector('.open-window');
+  const quizzWindow = document.querySelector('.quizz-showpage');
+  quizzHeader.innerHTML =""
+  questionBox.innerHTML=""
+  rightAnswers=0
+  allQuestions;
+  contador=0;
+  clickCounts=0;
+    openWindow.classList.remove('hidden');
+    quizzWindow.classList.add('hidden');
+}

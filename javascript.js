@@ -94,6 +94,12 @@ let cont3;
 let quizz_object;
 let waiting_answer;
 let created_quizz;
+let id_armazane = [];
+let back_home = document.querySelector('.screen-success-create .back_home');
+let my_quizz = document.querySelector('.screen-success-create .quizz_acess')
+let idcreated_quizz;
+const hidden_create_sucess = document.querySelector('.screen-success-create')
+
 
 
 
@@ -470,6 +476,7 @@ button_finish_quizz.addEventListener('click', () => {
           console.log(response.data.title)
           console.log(response.data.id)
           idcreated_quizz = response.data.id
+          
           let screen_sucess_create = document.querySelector('.screen-success-create')
           screen_sucess_create.classList.remove('hidden')
           let screen_sucess_img =  document.querySelector('.screen-success-create .imgquizz')
@@ -477,6 +484,7 @@ button_finish_quizz.addEventListener('click', () => {
           <img src="${response.data.image}">
           <figcaption>${response.data.title}</figcaption>
           `
+          
         })
         .catch (() =>{
           console.log('algo deu errado')
@@ -488,7 +496,7 @@ button_finish_quizz.addEventListener('click', () => {
   }
 
   
-
+  
 
 })
 
@@ -513,6 +521,21 @@ let alternate_level = (button_3) => {
 
   
 }
+
+back_home.addEventListener('click', () =>{
+  hidden_create_sucess.classList.add('hidden')
+  const show_open_window = document.querySelector('.open-window')
+  show_open_window.classList.remove('hidden')
+})
+
+my_quizz.addEventListener('click', () => {
+  hidden_create_sucess.classList.add('hidden');
+  const show_quizz_showpage = document.querySelector('.quizz-showpage');
+  show_quizz_showpage.classList.remove('hidden');
+  getChosenQuizz(idcreated_quizz); 
+})
+
+
 
 
 // JAVASCRIPT VICTOR LEONE DE OLIVEIRA

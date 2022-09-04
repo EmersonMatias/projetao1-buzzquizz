@@ -1,6 +1,7 @@
 
 /* JAVASCRIPT MANUELA*/
 let apiQuizzes = [];
+let apiQuizzId;
 
 function createQuizz(){
     const openWindow = document.querySelector('.open-window');

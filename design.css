@@ -367,6 +367,8 @@ body{
     font-weight: 400;
     font-size: 21px;
     line-height: 25px;
+
+    cursor: pointer;
   }
   
 .created-quizz {
@@ -390,6 +392,8 @@ body{
 .create-quizz-button-2 {
     font-size: 30px;
     color: #ec362d;
+
+    cursor: pointer;
   }
 
 
@@ -418,6 +422,8 @@ body{
     );
 
     border-radius: 5px;
+
+    cursor: pointer;
   }
   
 .quizz figcaption {

@@ -235,20 +235,20 @@ body{
 }
 
 .question {
-    border: #000000 solid 1px;
+    background-color: #EC362D;
     width: 100%;
-    height: 50%;
+    min-height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #FFFFFF;
-    background-color: rgb(41, 34, 167);
     font-size: 25px;
     font-weight: 600;
     margin-bottom: 5%;
+    text-align: center;
 }
 
-.question-container {
+.question-container,.final-container {
     padding: 3%;
     display: flex;
     flex-direction: column;
@@ -259,6 +259,7 @@ body{
     margin-bottom: 40px;
 }
 
+
 .answer-container {
     width: 100%;
     height: 20%;
@@ -266,6 +267,34 @@ body{
     flex-wrap: wrap;
     justify-content: space-between;
     flex-direction: row;
+}
+
+.result-container {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.quizz-result img {
+    width: 25vw;
+    height: 100%;
+    border: #000000 solid 1px;
+}
+
+.quizz-result  {
+    display: flex;
+    flex-direction: row;
+}
+
+.result-text {
+    width: 25vw;
+    margin-left: 2vw;
+    color: #000000;
+    font-weight: 600;
+    font-size: 25px;
+    text-align: justify;
 }
 
 .quizz-answer {
@@ -464,6 +493,30 @@ body{
     display: none;
 }
 
+.question-container-outline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
 
+.Reiniciar-Button {
+    background-color: #EC362D;
+    color: #FFFFFF;
+    font-size: 20px;
+    border-radius: 10px ;
+    border: none;
+    height: 50px;
+    width: 30vw;
+    align-self: center;
+    margin-bottom: 25px;
+}
 
+.home-link {
+  font-size: 20px; 
+  margin-bottom: 20px; 
+  color:#8d8989;
+  font-size: 20px;
+  font-weight: 500;
+}
 

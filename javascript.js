@@ -99,9 +99,14 @@ let back_home = document.querySelector('.screen-success-create .back_home');
 let my_quizz = document.querySelector('.screen-success-create .quizz_acess')
 let idcreated_quizz;
 const hidden_create_sucess = document.querySelector('.screen-success-create')
+let MyQuizzes = [];
+let QuizzShow = [];
 
-
-
+if (localStorage.id !== undefined){
+  let MyQuizzesRend = localStorage.id
+  let MyQuizzesTrand = JSON.parse(MyQuizzesRend)
+  QuizzShow = (MyQuizzesTrand);
+  }
 
 let check;
 
@@ -135,12 +140,12 @@ button_1.addEventListener('click', () =>
                 const put_questions = () => {
                     const questions_place = document.querySelector('.screen-create-questions .questions_place')
                     questions_place.innerHTML = questions_place.innerHTML + `
-                    <div class="create-questions question_${(cont+1).toString()}">
+                    <div class="create-questions question_${(cont+1).toString()}" data-identifier="question-form">
                   
                     <div class="first-question">
                       <div class="alternate">
                         <h3>Pergunta ${cont+1}</h3> 
-                        <button onclick="alternate_question(this)"> <ion-icon name="create-outline"></ion-icon> </button>
+                        <button onclick="alternate_question(this)" data-identifier="expand"> <ion-icon name="create-outline" ></ion-icon> </button>
                       
                       </div>
                       <div class="first-question-box">
@@ -276,10 +281,10 @@ button_create_levels.addEventListener('click', () => {
 
         while(cont3 < number_levels){
           put_levels.innerHTML = put_levels.innerHTML + `
-            <div class="levels1 level${(cont3+1).toString()}">
+            <div class="levels1 level${(cont3+1).toString()}" data-identifier="level">
               <div class="header-levels">
                 <h3>Nível ${cont3+1}</h3>
-                <button onclick="alternate_level(this)"> <ion-icon name="create-outline"></ion-icon> </button>
+                <button onclick="alternate_level(this)" data-identifier="expand"> <ion-icon name="create-outline"></ion-icon> </button>
               </div>
             
               <div class="hide-level">
@@ -475,8 +480,32 @@ button_finish_quizz.addEventListener('click', () => {
           console.log(response.data.image)
           console.log(response.data.title)
           console.log(response.data.id)
-          idcreated_quizz = response.data.id
+
+          idcreated_quizz = response.data.id;
+
+
+          if (localStorage.id !== undefined){
+            let MyQuizzesRnd = localStorage.id
+            let MyQuizzesTrans = JSON.parse(MyQuizzesRnd)
+            MyQuizzes = (MyQuizzesTrans);
+            localStorage.removeItem('id')
+          }
           
+          
+
+          
+          datacreated_quizz = response.data;
+          MyQuizzes.push(datacreated_quizz);
+          let listarend = JSON.stringify(MyQuizzes);
+          localStorage.setItem('id', listarend);
+
+          if (localStorage.id !== undefined){
+            let MyQuizzesRend = localStorage.id;
+            let MyQuizzesTrand = JSON.parse(MyQuizzesRend);
+            QuizzShow = (MyQuizzesTrand);
+          }
+
+
           let screen_sucess_create = document.querySelector('.screen-success-create')
           screen_sucess_create.classList.remove('hidden')
           let screen_sucess_img =  document.querySelector('.screen-success-create .imgquizz')
@@ -670,7 +699,7 @@ function renderFinalBox(index, level) {
   let correctLevel = chosenQuizz.levels[index];
   questionBox.innerHTML += 
   
-  `<div class="final-container" >
+  `<div class="final-container" data-identifier="quizz-result">
     <div class="question result">
     <p>${level}% de acerto: ${correctLevel.title} </p>
     </div>

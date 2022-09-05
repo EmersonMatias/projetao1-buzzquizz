@@ -1,7 +1,6 @@
 
 /* JAVASCRIPT MANUELA*/
 let apiQuizzes = [];
-let userQuizzes = [];
 let id;
 
 function createQuizz(){
@@ -35,6 +34,7 @@ function quizzesArrived(resposta) {
 
     console.log(apiQuizzes);
     renderizarQuizzes();
+    userQuizz();
 }
 
 function renderizarQuizzes(){
@@ -54,7 +54,7 @@ function renderizarQuizzes(){
 }
 
 function userQuizz () {
-  if (userQuizzes.length !==0){
+  if (QuizzShow.length !== 0){
     const noUserQuizz = document.querySelector('.create-quizz');
     const userQuizz = document.querySelector('.created-quizz');
 
@@ -63,11 +63,11 @@ function userQuizz () {
     const divUserQuizzes = document.querySelector('.container-user-quizz .quizzes');
     divUserQuizzes.innerHTML = '';
 
-      for(let i = 0; i < userQuizzes.length; i++){
-        let quizz = `<div class="quizz" data-identifier="quizz-card" onclick="openQuizz(this)">
-        <img src="https://http.cat/411.jpg">
+      for(let i = 0; i < QuizzShow.length; i++){
+        let quizz = `<div class="quizz" data-identifier="quizz-card" onclick="openQuizz(${QuizzShow[i].id})">
+        <img src="${QuizzShow[i].image}">
         <figcaption>
-          Acerte os personagens corretos dos Simpsons e prove seu amor!
+        ${QuizzShow[i].title}
         </figcaption>               
       </div>`
 

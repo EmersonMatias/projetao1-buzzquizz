@@ -614,14 +614,13 @@ body{
   }
 
   .created-quizz{
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
-.header1, .container-user-quizz, .create-quizz, .created-quizz, .api-quizzes {
-    width: 100%;
+.container-user-quizz, .create-quizz, .created-quizz, .api-quizzes {
+    width: 90%;
   }
 
   .quizzes {

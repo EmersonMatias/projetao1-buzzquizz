@@ -54,10 +54,10 @@ function renderizarQuizzes(){
 }
 
 function userQuizz () {
-  if (QuizzShow.length !== 0){
-    const noUserQuizz = document.querySelector('.create-quizz');
-    const userQuizz = document.querySelector('.created-quizz');
+  const noUserQuizz = document.querySelector('.create-quizz');
+  const userQuizz = document.querySelector('.created-quizz');
 
+  if (QuizzShow.length !== 0){
     noUserQuizz.classList.add('hidden');
     userQuizz.classList.remove('hidden');
     const divUserQuizzes = document.querySelector('.container-user-quizz .quizzes');
@@ -73,6 +73,9 @@ function userQuizz () {
 
       divUserQuizzes.innerHTML += quizz;
        }
+  } else {
+    noUserQuizz.classList.remove('hidden');
+    userQuizz.classList.add('hidden');
   }
 }
 

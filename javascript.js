@@ -184,7 +184,12 @@ button_1.addEventListener('click', () =>
 
 
         } else{
-            alert('Alguma informação está errada, certifique-se que digitou tudo corretamente');
+            alert(`Alguma informação está errada, certifique-se que digitou tudo corretamente: 
+            1) Título do quizz: deve ter no mínimo 20 e no máximo 65 caracteres;
+            2) URL da Imagem: deve ter formato de URL;
+            3) Quantidade de perguntas: no mínimo 3 perguntas;
+            4) Quantidade de níveis: no mínimo 2 níveis.
+            `);
         }
 
 
@@ -253,7 +258,12 @@ button_create_levels.addEventListener('click', () => {
             verificador++
         }
         else {
-            alert(`Há algo de errado na sua Pergunta ${cont2+1}. Por favor, verifique as informações digitadas`);
+            alert(`Há algo de errado na sua Pergunta ${cont2+1}. Por favor, verifique as informações digitadas:
+            1) Texto da pergunta: no mínimo 20 caracteres;
+            2) Cor de fundo: deve ser uma cor em hexadecimal, começando com #;
+            3) Textos das respostas: não pode estar vazio
+            4) URL das imagens de resposta: deve ter formato de URL;
+            5) É obrigatória a inserção da resposta correta e de pelo menos 1 resposta errada.`);
         }
         
        
@@ -345,7 +355,13 @@ button_finish_quizz.addEventListener('click', () => {
       alert('PASSOU +1')
       verificador2++
     } else {
-      alert(`Existe algum erro no Nível ${cont4+1}`)
+      alert(`Existe algum erro no Nível ${cont4+1}, verifique que digitou as informaçõpes corretas
+      1)Título do nível: mínimo de 10 caracteres;
+      2) % de acerto mínima: um número entre 0 e 100;
+      3) URL da imagem do nível: deve ter formato de URL;
+      4) Descrição do nível: mínimo de 30 caracteres;
+      5) É obrigatório existir pelo menos 1 nível cuja % de acerto mínima seja 0%.
+      `)
     }
 
     console.log(verificador2);

@@ -14,6 +14,8 @@ body{
     flex-direction: column;
     align-items: center;
     font-family: Roboto;
+   
+    width: 100%;
 }
 
 .quizz-criation .header-style{
@@ -133,7 +135,7 @@ body{
     /*CSS SCREEN-CREATE-QUESTION*/
 
 .screen-create-questions .create-questions{
-    width: 564px;
+    width: 600px;
     height: 100%;
     background-color: #FFFFFF;
     display: flex;
@@ -146,15 +148,13 @@ body{
 }
 
 .screen-create-questions .create-questions .first-question{
-    background-color: palevioletred;
-    
+ 
     
 }
 
 .screen-create-questions .create-questions .alternate{
     display: flex;
     justify-content: space-between;
-    background-color: bisque;
     width: 583px;
 }
 
@@ -185,14 +185,14 @@ body{
 }
 
 .screen-create-questions .create-questions .corret-answer{
-    background-color: pink;
+
     margin-top: 20px;
     
 }
 
 .screen-create-questions .create-questions .incorret-answer{
+    
     margin-top: 20px;
-    background-color: red;
 
 }
 
@@ -248,7 +248,7 @@ body{
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
-    background-color: aqua;
+  
     width: 600px;
 }
 
@@ -686,6 +686,41 @@ body{
   .title-page1 {
     justify-content: space-between;
   }
+
+
+
+.quizz-criation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Roboto;
+    width: 100%;
+    overflow: hidden;
+}
+
+.screen-basic-informations,
+.screen-create-questions,
+.screen-create-levels,
+.screen-success-create
+{
+    
+    width: 100vw;
+    height: 100%;
+    margin-top: 69px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.screen-basic-informations .basic-informations,
+.screen-create-questions .questiquestions_place
+
+{
+    width: 100vw;
+}
+
 
 
 }

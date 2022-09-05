@@ -147,11 +147,6 @@ body{
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
-.screen-create-questions .create-questions .first-question{
- 
-    
-}
-
 .screen-create-questions .create-questions .alternate{
     display: flex;
     justify-content: space-between;

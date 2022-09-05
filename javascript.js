@@ -73,10 +73,7 @@ function userQuizz () {
 
       divUserQuizzes.innerHTML += quizz;
        }
-  } else {
-    noUserQuizz.classList.remove('hidden');
-    userQuizz.classList.add('hidden');
-  }
+  } 
 }
 
 

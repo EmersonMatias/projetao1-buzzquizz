@@ -579,7 +579,7 @@ my_quizz.addEventListener('click', () => {
   show_quizz_showpage.classList.remove('hidden');
   getChosenQuizz(idcreated_quizz); 
 })
-
+local
 
 
 
